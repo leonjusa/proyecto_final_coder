@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import EmpleadoFormulario
-from .models import Empleado
+from .forms import EmpleadoFormulario, CafeFormulario, ClienteFormulario
+from .models import Empleado, Cliente, Tipo_cafe
 
 # Create your views here.
 
@@ -50,3 +50,68 @@ def empleadoFormulario(request):
       miFormulario = EmpleadoFormulario()
 
       return render(request, "empleadoformulario.html", {"miFormulario": miFormulario})
+    
+
+
+def clienteFormulario(request):
+    
+    print('method: ', request.method)
+    print('post: ', request.POST)
+
+    if request.method == 'POST':
+      
+      miFormulario = ClienteFormulario(request.POST)
+
+      print(miFormulario)
+
+      if miFormulario.is_valid():
+          
+          data = miFormulario.cleaned_data
+
+          cliente = Cliente(nombre=data['nombre'], apellido=data['apellido'], email=data['email'])
+          cliente.save()
+    
+          return render(request, "inicio.html")
+    
+      else:
+          
+          return render(request, "inicio.html", {"mensaje": "Formulario invalido"})
+    
+    else:
+
+      miFormulario = ClienteFormulario()
+
+      return render(request, "clienteformulario.html", {"miFormulario": miFormulario})
+
+
+    
+
+def cafeFormulario(request):
+    
+    print('method: ', request.method)
+    print('post: ', request.POST)
+
+    if request.method == 'POST':
+      
+      miFormulario = CafeFormulario(request.POST)
+
+      print(miFormulario)
+
+      if miFormulario.is_valid():
+          
+          data = miFormulario.cleaned_data
+
+          cafe = Tipo_cafe(nombre=data['nombre'], tostado=data['tostado'], grano=data['grano'], cantidad_kg=data['cantidad_kg'])
+          cafe.save()
+    
+          return render(request, "inicio.html")
+    
+      else:
+          
+          return render(request, "inicio.html", {"mensaje": "Formulario invalido"})
+    
+    else:
+
+      miFormulario = CafeFormulario()
+
+      return render(request, "cafeformulario.html", {"miFormulario": miFormulario})

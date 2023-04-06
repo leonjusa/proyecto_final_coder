@@ -13,7 +13,7 @@ class CafeFormulario(forms.Form):
     grano = forms.CharField()
     cantidad_kg = forms.IntegerField()
 
-class ClienteFormulario():
+class ClienteFormulario(forms.Form):
 
     nombre = forms.CharField()
     apellido = forms.CharField()
