@@ -10,6 +10,8 @@ urlpatterns = [
    path('empleadoformulario/', empleadoFormulario, name="empleadoformulario"),
    path('clienteformulario/', clienteFormulario, name="clienteformulario"),
    path('cafeformulario/', cafeFormulario, name="cafeformulario"),
+   path('busquedacliente/', busquedacliente, name="Busquedacliente"),
+   path('buscar/', buscar, name="Buscar"),
 
 
 ]

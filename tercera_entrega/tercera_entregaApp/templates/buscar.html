@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block herencia %}
+  
+<form action="{% url 'Buscar' %}" method="GET">{% csrf_token %}
+
+    <p>Nombre: <input type="text" name="nombre" id="nombre"></p>
+
+    <button type="submit"> busquedaCliente </button>
+
+  </form>  
+
+
+{% endblock herencia %}

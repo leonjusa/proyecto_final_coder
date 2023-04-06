@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block herencia %}
+
+{% if apellidos %}
+<ul>
+  {% for apellido in apellidos %}
+    <li>
+      {{cliente.nombre}} - {{cliente.apellido}}
+    </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+
+<p>No se encontró ningun curso</p>
+
+{% endif %}
+  
+{% endblock herencia %}
+

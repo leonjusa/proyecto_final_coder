@@ -83,7 +83,6 @@ def clienteFormulario(request):
 
       return render(request, "clienteformulario.html", {"miFormulario": miFormulario})
 
-
     
 
 def cafeFormulario(request):
@@ -115,3 +114,20 @@ def cafeFormulario(request):
       miFormulario = CafeFormulario()
 
       return render(request, "cafeformulario.html", {"miFormulario": miFormulario})
+    
+
+def buscar(request):
+
+    return render(request, "buscar.html")  
+
+def busquedacliente(request):
+    
+    if request.GET["nombre"]:
+        
+        nombre = request.GET["nombre"]
+        apellido = Cliente.objects.filter(nombre=nombre)
+        return render(request, "busquedacliente.html", {"nombre": nombre, "apellido": apellido})
+    
+    else:
+        
+      return HttpResponse(f'No enviaste info')
