@@ -1,60 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% load static %}
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Super Bold Coffee Roasters by Leonardo Laborda</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body>
-<!-- Navigation-->
-<nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-        <div class="mi-button">
-        
-        </div>
+  <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Super Bold Coffee Roasters by Leonardo Laborda</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap) -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+  </head>
+  
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+      <div class="container">
         <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-        <a class="navbar-brand" href="{% url 'clienteformulario' %}">Ingreso de Clientes</a>
-        <a class="navbar-brand" href="{% url 'empleadoformulario' %}">Ingreso de Empleados</a>
-        <a class="navbar-brand" href="{% url 'cafeformulario' %}">Cafe</a>
-        <a class="navbar-brand" href="{% url 'busquedacliente' %}">Buscar Cliente</a>
-        
-
-         
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="{% url 'clienteformulario' %}">Ingreso de Clientes</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'empleadoformulario' %}">Ingreso de Empleados</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'cafeformulario' %}">Café</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'busquedacliente' %}">Buscar Cliente</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Header -->
+    <header class="bs-primary py-5" style="background-color: #025e6e;">
+    
+    {% block herencia %}
+    {% endblock herencia %}
+    
+<!-- Footer -->
+<footer class="bs-primary" style="background-color: #025e6e;">
+    <div class="container text-center d-flex justify-content-center">
+      <p class="m-0 text-white">Copyright &copy; Leonardo Laborda 2023
+      </p>
     </div>
-  </nav>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-dark py-5"></header>
-        {% block herencia %}
-          
-        {% endblock herencia %}
-    </header>
-
- 
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Leonardo Laborda 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
-</html>
+  </footer>

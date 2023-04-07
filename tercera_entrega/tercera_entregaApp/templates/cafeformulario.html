@@ -6,7 +6,7 @@
   
 <form action="{% url 'cafeformulario' %}" method="POST">{% csrf_token %}
 
-    {{miFormulario.as_p}}
+    {{miFormulario.as_table}}
 
     <button type="submit"> Enviar </button>
 

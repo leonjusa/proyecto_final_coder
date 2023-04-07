@@ -3,18 +3,82 @@
 {% load static %}
 
 {% block herencia %}
+
+<header class="bs-primary" style="background-color: #13356d; py-5">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-6 text-center">
+          <h1 class="display-4 text-white mb-3" style="text-shadow: 2px 2px 4px #000000; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #ffffff;">Bienvenidos a Super Bold Coffee Roasters</h1>
+          <p class="lead text-white mb-4" style="text-shadow: 1px 1px 2px #000000;">Disfruta de una experiencia única en cada taza de café.</p>
+        </div>
+      </div>
+    </div>
+  </header>
  
-<header class="bg-dark py-5">
-    <div class="container px-5">
-        <div class="row gx-5 justify-content-center">
-            <div class="col-lg-6">
-                <div class="text-center my-5">
-                    <h1 class="display-5 fw-bolder text-white mb-2">Present your business in a whole new way</h1>
-                    
+  
+
+<!-- Types of coffee section -->
+<section id="menu" class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Arábica</h2>
+                        <p class="card-text">Disfruta de nuestro café Arábica de origen colombiano con notas de chocolate y frutos rojos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Robusta</h2>
+                        <p class="card-text">Prueba nuestro café Robusta de origen vietnamita con notas de cacao y frutos secos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Liberica</h2>
+                        <p class="card-text">Explora nuestro café Liberica de origen filipino con notas de madera y especias.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
-  
+</section>
+
+<!-- Services section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Café de calidad</h2>
+                        <p class="card-text">Seleccionamos cuidadosamente los granos de café de la mejor calidad para asegurarnos de que cada taza tenga un sabor excepcional.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Ambiente acogedor</h2>
+                        <p class="card-text">Ven a relajarte en nuestro acogedor café y disfruta de una atmósfera cálida y amigable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Personal amable</h2>
+                        <p class="card-text">Nuestro equipo de baristas está siempre dispuesto a ayudarte a encontrar el café perfecto para ti.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock herencia %}
