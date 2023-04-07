@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import EmpleadoFormulario, CafeFormulario, ClienteFormulario
 from .models import Empleado, Cliente, Tipo_cafe
 
-# Create your views here.
+
 
 def inicio(self):
     
@@ -50,9 +50,7 @@ def empleadoFormulario(request):
       miFormulario = EmpleadoFormulario()
 
       return render(request, "empleadoformulario.html", {"miFormulario": miFormulario})
-    
-
-
+  
 def clienteFormulario(request):
     
     print('method: ', request.method)
@@ -82,9 +80,7 @@ def clienteFormulario(request):
       miFormulario = ClienteFormulario()
 
       return render(request, "clienteformulario.html", {"miFormulario": miFormulario})
-
     
-
 def cafeFormulario(request):
     
     print('method: ', request.method)
@@ -116,18 +112,17 @@ def cafeFormulario(request):
       return render(request, "cafeformulario.html", {"miFormulario": miFormulario})
     
 
+def busquedaCliente(request):
+
+    return render(request, "busquedacliente.html")  
+
 def buscar(request):
-
-    return render(request, "buscar.html")  
-
-def busquedacliente(request):
-    
+  
     if request.GET["nombre"]:
         
         nombre = request.GET["nombre"]
-        apellido = Cliente.objects.filter(nombre=nombre)
-        return render(request, "busquedacliente.html", {"nombre": nombre, "apellido": apellido})
+        cliente = Cliente.objects.filter(nombre=nombre)
+        return render(request, "resultadosbusqueda.html", {"cliente": cliente, "nombre": nombre})
     
     else:
-        
-      return HttpResponse(f'No enviaste info')
+        return HttpResponse(f'No se recibio informacion')

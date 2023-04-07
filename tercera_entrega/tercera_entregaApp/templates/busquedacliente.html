@@ -3,21 +3,14 @@
 {% load static %}
 
 {% block herencia %}
-
-{% if apellidos %}
-<ul>
-  {% for apellido in apellidos %}
-    <li>
-      {{cliente.nombre}} - {{cliente.apellido}}
-    </li>
-  {% endfor %}
-</ul>
-
-{% else %}
-
-<p>No se encontró ningun curso</p>
-
-{% endif %}
   
-{% endblock herencia %}
+  <form action="{% url 'Buscar' %}" method="GET">{% csrf_token %}
 
+    <p>Nombre del Cliente: <input type="text" name="nombre" id="nombre"></p>
+
+    <button type="submit"> Buscar </button>
+
+  </form>
+
+{% endblock herencia %}
+  
