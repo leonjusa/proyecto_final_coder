@@ -9,18 +9,6 @@ def inicio(self):
     
     return render(self, "inicio.html")
 
-def empleados(self):
-    
-    return render(self, "empleados.html")
-
-def cafe(self):
-    
-    return render(self, "cafe.html")
-
-def clientes(self):
-    
-    return render(self, "clientes.html")
-
 def empleadoFormulario(request):
     
     print('method: ', request.method)
@@ -110,8 +98,7 @@ def cafeFormulario(request):
       miFormulario = CafeFormulario()
 
       return render(request, "cafeformulario.html", {"miFormulario": miFormulario})
-    
-
+   
 def busquedaCliente(request):
 
     return render(request, "busquedacliente.html")  

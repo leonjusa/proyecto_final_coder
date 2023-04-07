@@ -22,10 +22,13 @@
         
         </div>
         <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-        <a class="navbar-brand" href="{% url 'Cafe' %}">Cafe</a>
-        <a class="navbar-brand" href="{% url 'clientes' %}">Clientes</a>
-        <a class="navbar-brand" href="{% url 'Empleados' %}">Empleados</a>
-     
+        <a class="navbar-brand" href="{% url 'clienteformulario' %}">Ingreso de Clientes</a>
+        <a class="navbar-brand" href="{% url 'empleadoformulario' %}">Ingreso de Empleados</a>
+        <a class="navbar-brand" href="{% url 'cafeformulario' %}">Cafe</a>
+        <a class="navbar-brand" href="{% url 'busquedacliente' %}">Buscar Cliente</a>
+        
+
+         
     </div>
   </nav>
                     </ul>
@@ -33,9 +36,11 @@
             </div>
         </nav>
         <!-- Header-->
+        <header class="bg-dark py-5"></header>
         {% block herencia %}
           
         {% endblock herencia %}
+    </header>
 
  
         <!-- Footer-->
