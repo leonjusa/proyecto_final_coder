@@ -9,5 +9,6 @@ urlpatterns = [
    path('cafeformulario/', cafeFormulario, name="cafeformulario"),
    path('busquedacliente/', busquedaCliente, name="busquedacliente"),
    path('buscar/', buscar, name="Buscar"),
+   path('listacafe/', Listacafe.as_view(), name="listacafe"),
 
 ]

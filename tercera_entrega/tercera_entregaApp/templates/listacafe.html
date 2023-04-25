@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block herencia %}
+  
+<h1>Listado de Tipos de Cafe</h1>
+
+<ul>
+  {% for caf in cafe %}
+    <li>
+       {{ caf }}
+    </li>
+  {% endfor %}
+</ul>
+
+
+
+{% endblock herencia %}

@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import EmpleadoFormulario, CafeFormulario, ClienteFormulario
 from .models import Empleado, Cliente, Tipo_cafe
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
 
 
 
@@ -113,3 +116,22 @@ def buscar(request):
     
     else:
         return HttpResponse(f'No se recibio informacion')
+    
+class Listacafe(ListView):
+  
+  model = Tipo_cafe
+  template_name = 'listacafe.html'
+  context_object_name = 'cafe'
+
+class Cafedetail(DetailView):
+  
+  model = Tipo_cafe
+  template_name = 'cafedetail.html'
+  context_object_name = 'cafedet'
+
+class Cafecreate(CreateView):
+   
+  model = Cafedetail
+  template_name = 'cafecreate.html'
+  fields = ['nombre', 'tostado','grano','cantidad']
+  success_url = '/app-coder/'
