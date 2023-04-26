@@ -9,7 +9,18 @@
 <ul>
   {% for caf in cafe %}
     <li>
-       {{ caf }}
+        <a href="{% url 'cafedetail' caf.id %}">
+            {{ caf }}
+          </a>
+        </li>
+        <div style="display: flex; column-gap: 5px;">
+          <button>
+            <a href="{% url 'cafedelete' caf.id %}">Eliminar</a>
+          </button>
+          <button>
+            <a href="{% url 'cafeupdate' caf.id %}">Editar</a>
+          </button>
+        </div>
     </li>
   {% endfor %}
 </ul>

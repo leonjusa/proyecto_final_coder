@@ -17,23 +17,33 @@
   
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="{% url 'clienteformulario' %}">Ingreso de Clientes</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'empleadoformulario' %}">Ingreso de Empleados</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'cafeformulario' %}">Café</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'busquedacliente' %}">Buscar Cliente</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'clienteformulario' %}">Ingreso de Clientes</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'empleadoformulario' %}">Ingreso de Empleados</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'cafeformulario' %}">Café</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'busquedacliente' %}">Buscar Cliente</a></li>
+        {% if user.is_authenticated %}    
+        {% if url %}
+          <img height="40px" src="{{url}}" alt="avatar">
+        {% endif %}
+        <li class="nav-item"><p class="nav-link mb-0">Bienvenido: {{user.username}}</p></li>
+        <li class="nav-item"><a class="btn btn-primary" href="{% url 'logout' %}">LOGOUT</a></li>
+      {% else %}
+        <li class="nav-item"><a class="btn btn-primary" href="{% url 'login' %}">LOGIN</a></li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
     <!-- Header -->
     <header class="bs-primary py-5" style="background-color: #025e6e;">
     

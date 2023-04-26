@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block herencia %}
+  
+<h1>Detalle del cafe</h1>
+<h4>Nombre: {{cafedet.nombre}}, Tostado: {{cafedet.tostado}}, Grano: {{cafedet.grano}}, Cantidad disponible: {{cafedet.cantidad_kg}}Kg</h4>
+
+
+{% endblock herencia %}

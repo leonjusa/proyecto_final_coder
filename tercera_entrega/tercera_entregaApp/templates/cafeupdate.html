@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block herencia %}
+  
+<form action="{% url 'cafeupdate' cafeup.id %}" method="POST">{% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit"> Enviar </button>
+
+  </form>
+
+
+{% endblock herencia %}
