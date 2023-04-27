@@ -4,8 +4,12 @@
 
 {% block herencia %}
   
-<h1>Detalle del cafe</h1>
-<h4>Nombre: {{cafedet.nombre}}, Tostado: {{cafedet.tostado}}, Grano: {{cafedet.grano}}, Cantidad disponible: {{cafedet.cantidad_kg}}Kg</h4>
+<h1>Detalle del café</h1>
+<h4>Nombre: {{ cafedet.nombre }}, Tostado: {{ cafedet.tostado }}, Grano: {{ cafedet.grano }}, Cantidad disponible: {{ cafedet.cantidad_kg }} Kg</h4>
+
+{% if cafedet.imagen %}
+  <img src="{{ cafedet.imagen.url }}" alt="Imagen del café {{ cafedet.nombre }}" style="max-width: 300px;">
+{% endif %}
 
 
 {% endblock herencia %}

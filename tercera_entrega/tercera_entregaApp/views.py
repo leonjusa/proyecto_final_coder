@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import EmpleadoFormulario, CafeFormulario, ClienteFormulario, UserEditForm
-from .models import Empleado, Cliente, Tipo_cafe
+from .models import Empleado, Cliente, Tipo_cafe, Avatar
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
@@ -14,7 +14,11 @@ from django.contrib.auth.models import User
 
 def inicio(self):
     
-    return render(self, "inicio.html")
+    try:
+      avatar = Avatar.objects.get(user=self.user.id)
+      return render(self, 'inicio.html', {'url': avatar.imagen.url})
+    except:
+      return render(self, "inicio.html")
 
 def empleadoFormulario(request):
     
@@ -133,20 +137,42 @@ class Cafedetail(DetailView):
   template_name = 'cafedetail.html'
   context_object_name = 'cafedet'
 
+#class Cafecreate(CreateView):
+   
+#  model = Tipo_cafe
+#  template_name = 'cafecreate.html'
+#  fields = ['nombre', 'tostado','grano','cantidad_kg']
+#  success_url = '/tercera_entregaApp/'
+
 class Cafecreate(CreateView):
    
   model = Tipo_cafe
   template_name = 'cafecreate.html'
-  fields = ['nombre', 'tostado','grano','cantidad_kg']
+  fields = ['nombre', 'tostado','grano','cantidad_kg',]
   success_url = '/tercera_entregaApp/'
 
+  def form_valid(self, form):
+    response = super().form_valid(form)
+    if 'imagen' in self.request.FILES:
+      self.object.imagen = self.request.FILES['imagen']
+      self.object.save()
+    return response
+
+
 class Cafeupdate(UpdateView):
-   
-  model = Tipo_cafe
-  template_name = 'cafeupdate.html'
-  fields = ('__all__')
-  success_url = '/tercera_entregaApp/'
-  context_object_name = 'cafeup'
+    model = Tipo_cafe
+    template_name = 'cafeupdate.html'
+    fields = ('nombre', 'tostado', 'grano', 'cantidad_kg', 'imagen')
+    success_url = '/tercera_entregaApp/'
+    context_object_name = 'cafeup'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        if self.request.FILES.get('imagen'):
+            self.object.imagen = self.request.FILES['imagen']
+            self.object.save()
+        return response
+
 
 class Cafedelete(DeleteView):
    
@@ -213,6 +239,7 @@ def editarperfil(request):
           usuario.email = data['email']
           usuario.first_name = data['first_name']
           usuario.last_name = data['last_name']
+          usuario.set_password(data["password1"])
           usuario.save()
           
           return render(request, "inicio.html", {"mensaje": "Datos actualizados!"})
