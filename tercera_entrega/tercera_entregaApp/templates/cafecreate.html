@@ -6,26 +6,28 @@
   
 <form action="{% url 'cafecreate' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  <div class="form-group">
-    <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
-    {{ form.nombre }}
-  </div>
-  <div class="form-group">
-    <label for="{{ form.tostado.id_for_label }}">Tostado:</label>
-    {{ form.tostado }}
-  </div>
-  <div class="form-group">
-    <label for="{{ form.grano.id_for_label }}">Grano:</label>
-    {{ form.grano }}
-  </div>
-  <div class="form-group">
-    <label for="{{ form.cantidad_kg.id_for_label }}">Cantidad en Kg:</label>
-    {{ form.cantidad_kg }}
-  </div>
-  <div class="form-group">
-    <label for="{{ form.imagen.id_for_label }}">Imagen:</label>
-    {{ form.imagen }}
-  </div>
+  <table>
+    <tr>
+      <td><label for="{{ form.nombre.id_for_label }}">Nombre:</label></td>
+      <td>{{ form.nombre }}</td>
+    </tr>
+    <tr>
+      <td><label for="{{ form.tostado.id_for_label }}">Tostado:</label></td>
+      <td>{{ form.tostado }}</td>
+    </tr>
+    <tr>
+      <td><label for="{{ form.grano.id_for_label }}">Grano:</label></td>
+      <td>{{ form.grano }}</td>
+    </tr>
+    <tr>
+      <td><label for="{{ form.cantidad_kg.id_for_label }}">Cantidad en Kg:</label></td>
+      <td>{{ form.cantidad_kg }}</td>
+    </tr>
+    <tr>
+      <td><label for="{{ form.imagen.id_for_label }}">Imagen:</label></td>
+      <td>{{ form.imagen }}</td>
+    </tr>
+  </table>
   <button type="submit">Enviar</button>
 </form>
 

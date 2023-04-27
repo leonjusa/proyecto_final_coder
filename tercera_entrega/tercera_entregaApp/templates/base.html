@@ -26,10 +26,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Registrarse</a></li>
+        {% if user.is_authenticated %}
         <li class="nav-item"><a class="nav-link" href="{% url 'clienteformulario' %}">Ingreso de Clientes</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'editarperfil' %}">Mi perfil</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'empleadoformulario' %}">Ingreso de Empleados</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'cafeformulario' %}">Café</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'listacafe' %}">Café</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'busquedacliente' %}">Buscar Cliente</a></li>
+        {% endif %}
         {% if user.is_authenticated %}    
         {% if url %}
           <img height="40px" src="{{url}}" alt="avatar">
@@ -49,11 +53,14 @@
     
     {% block herencia %}
     {% endblock herencia %}
-    
 <!-- Footer -->
 <footer class="bs-primary" style="background-color: #025e6e;">
-    <div class="container text-center d-flex justify-content-center">
-      <p class="m-0 text-white">Copyright &copy; Leonardo Laborda 2023
-      </p>
+  <div class="container text-center">
+    <p class="m-2 text-white">Copyright &copy; Leonardo Laborda 2023
+    </p>
+    <div class="container text-center py-3">
+      <a class="btn btn-outline-light btn-lg" href="{% url 'about' %}">About Me</a>
     </div>
-  </footer>
+  </div>
+</footer>
+

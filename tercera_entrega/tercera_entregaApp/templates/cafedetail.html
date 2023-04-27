@@ -3,13 +3,40 @@
 {% load static %}
 
 {% block herencia %}
-  
-<h1>Detalle del café</h1>
-<h4>Nombre: {{ cafedet.nombre }}, Tostado: {{ cafedet.tostado }}, Grano: {{ cafedet.grano }}, Cantidad disponible: {{ cafedet.cantidad_kg }} Kg</h4>
 
-{% if cafedet.imagen %}
-  <img src="{{ cafedet.imagen.url }}" alt="Imagen del café {{ cafedet.nombre }}" style="max-width: 300px;">
-{% endif %}
+<header class="bs-primary" style="background-color: #025e6e; py-5">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-6 text-center">
+          <h1 class="display-6 text-white mb-3" style="text-shadow: 2px 2px 4px #000000; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #ffffff;">Detalles</h1>
+          <p class="lead text-white mb-4" style="text-shadow: 1px 1px 2px #000000;"></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+<head>
+    <link href="{% static 'css/estilos.css' %}" rel="stylesheet" />
+
+</head>
+  
+
+  <div class="container">
+    <div class="info">
+      <p><strong>Nombre:</strong> {{ cafedet.nombre }}</p>
+      <p><strong>Tostado:</strong> {{ cafedet.tostado }}</p>
+      <p><strong>Grano:</strong> {{ cafedet.grano }}</p>
+      <p><strong>Cantidad disponible:</strong> {{ cafedet.cantidad_kg }} Kg</p>
+    </div>
+    <div class="image">
+      {% if cafedet.imagen %}
+        <img src="{{ cafedet.imagen.url }}" alt="Imagen del café {{ cafedet.nombre }}">
+      {% endif %}
+    </div>
+  </div>
+  
 
 
 {% endblock herencia %}

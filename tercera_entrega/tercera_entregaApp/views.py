@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import user_passes_test
 
 
 def inicio(self):
@@ -19,7 +21,8 @@ def inicio(self):
       return render(self, 'inicio.html', {'url': avatar.imagen.url})
     except:
       return render(self, "inicio.html")
-
+    
+@staff_member_required(login_url='/tercera_entregaApp/noaut/')
 def empleadoFormulario(request):
     
     print('method: ', request.method)
@@ -110,6 +113,7 @@ def cafeFormulario(request):
 
       return render(request, "cafeformulario.html", {"miFormulario": miFormulario})
    
+@staff_member_required(login_url='/tercera_entregaApp/noaut/')
 def busquedaCliente(request):
 
     return render(request, "busquedacliente.html")  
@@ -124,7 +128,8 @@ def buscar(request):
     
     else:
         return HttpResponse(f'No se recibio informacion')
-    
+
+
 class Listacafe(LoginRequiredMixin, ListView):
   
   model = Tipo_cafe
@@ -137,18 +142,12 @@ class Cafedetail(DetailView):
   template_name = 'cafedetail.html'
   context_object_name = 'cafedet'
 
-#class Cafecreate(CreateView):
-   
-#  model = Tipo_cafe
-#  template_name = 'cafecreate.html'
-#  fields = ['nombre', 'tostado','grano','cantidad_kg']
-#  success_url = '/tercera_entregaApp/'
 
 class Cafecreate(CreateView):
    
   model = Tipo_cafe
   template_name = 'cafecreate.html'
-  fields = ['nombre', 'tostado','grano','cantidad_kg',]
+  fields = ['nombre', 'tostado','grano','cantidad_kg','imagen',]
   success_url = '/tercera_entregaApp/'
 
   def form_valid(self, form):
@@ -242,7 +241,7 @@ def editarperfil(request):
           usuario.set_password(data["password1"])
           usuario.save()
           
-          return render(request, "inicio.html", {"mensaje": "Datos actualizados!"})
+          return render(request, "inicio.html", {"mensaje": "Datos actualizados, vuelve a iniciar sesion"})
     
       else:
           return render(request, "inicio.html", {"miform": miform})
@@ -250,3 +249,24 @@ def editarperfil(request):
       miform = UserEditForm(instance=request.user)
       return render(request, "editarPerfil.html", {"miform": miform})
     
+def About(request):
+    context = {
+        'title': 'Acerca de mí',
+        'image_url': '/media/fotoleo.jpg',
+        'texto': """Mi nombre es Leonardo Laborda.
+Nací en Montevideo en el año 1977, desde muy chico sentí atracción por la informática y la electrónica en general, teniendo mis primeros pasos con una Sinclair ZX Septum 48Kb RAM, con ella aprendí de forma autodidacta a programar en Basic.
+Estudie Ingeniería electrónica, fotografía, edición cinematográfica, y varios cursos cortos relacionados con las ventas y la informática.
+Mi sueño siempre fue estudiar programación “profunda” pero por razones económicas me fue imposible, y para empeorar la situación emigre para Estados Unidos a la edad de 22 años y mi vida a partir de ahí fue dedicada al trabajo y la familia.
+En USA realizo trabajos de reparaciones de computadoras, programación de bases de datos en Access, instalación de sistemas de CCTV, me desempeño como fotógrafo y manejo Uber los fines de semana.
+Siempre fui muy inquieto por el conocimiento, la lectura es mi pasión y si es sobre ciencia mucho mejor, en los ratos libres leo  sobre: física relativista, mecánica cuántica, astrofísica, e historia.
+La Astronomía la cultivo desde muy pequeño, soy miembro de asociaciones relacionadas voy regularmente a observatorios y tengo mi propio telescopio.
+Dada la rápida expansión de los trabajos remotos, fue este año que decidí volver a abrir la cabeza al conocimiento y comenzar a estudiar programación y carreras relacionadas.
+“Nunca es tarde para reinventarse y evolucionar”
+
+							                    Leonardo Laborda 2023
+""",
+    }
+    return render(request, 'about.html', context)
+
+def Noaut(request):
+   return render(request, "noaut.html")
