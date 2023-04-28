@@ -1,7 +1,18 @@
-# Tercera-pre-entrega-Laborda
-Aqui esta todo el desarrollo de la tercera pre entrega de Leonardo Laborda
+# Proyecto final de Lenoardo Laborda
 
-Esta es una base muy simple de una pagina de tostadores de cafe, no le puse estilos ni ningun adorno debido a que no tuvimos clases relacionadas a eso mismo, tampoco como ordenar mejor los formularios, asi que hice lo mejor que pude con los conocimientos adquiridos hasta el momento.
-No tengo background de diseño web alguno solo una leve idea de html que consegui con un video de youtube.
-Tenemos las 3 clases minimas Clientes, Empleados, y Tipo de cafe. Ademas de las busquedas de clientes por nombre y filtra los resultados mostrando varios si hay con el mismo nombre.
-Utilice herancia de templates con un html base del que toman los demas.
+
+El video explicativo se encuentra en la raiz de la app con el nombre: "Video presentacion Leonardo Laborda proyecto final Coder"
+Tambien en el mismo lugar esta el archivo xls con casos de prueba
+Este proyecto lo comence reciclando la tercera entrega ya que la idea era la misma y tenia la estructura lista
+Son muchas funcionalidades que se agregaron como se explica en el video
+La estetica bueno... tengo casi nada de conocimiento de html y css, asi que hice lo mejor que pude con el tiempo disponible
+Lo importante fue cumplir con los requerimientos y me tomo varios dias de trabajo que todo quedara funcionando, ya que recicle algunas cosas del proyecto coder pero en su mayoria
+fue casi todo creado especificamente para esta aplicacion.
+Em el futuro cercano me gustaria termianarla y agregarle las funcionalidades de carrito y los otros CRUD.
+
+Los datos del admin son:
+
+User: leo329
+pass: 37224085
+
+los otros usuarios fueron creados con el pass: leo37224085
